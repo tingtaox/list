@@ -34,6 +34,8 @@ module.exports = {
       ]
   },
 
+  watch: true,
+
   plugins: [
     new ExtractTextPlugin({
       // define where to save the file
