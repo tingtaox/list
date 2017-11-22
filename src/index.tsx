@@ -1,9 +1,32 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 
-import { Hello } from "./components/Hello";
+import { Header } from "./components/Header";
+import { ListView } from './components/ListView';
+import { DetailView } from './components/DetailView';
+
+const DefaultView = () => {
+  return (
+    <div>
+      <Link to="/list">List View</Link>
+      <Link to="/detail">Detail View</Link>
+      <span>Default view..</span>
+    </div>
+  );
+};
+
+const App = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={DefaultView} />
+      <Route exact path="/list" component={ListView} />
+      <Route exact path="/detail" component={DetailView} />
+    </Switch>
+  </BrowserRouter>
+);
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
-    document.getElementById("example")
+  <App />,
+  document.getElementById("example")
 );
