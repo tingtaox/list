@@ -27,6 +27,12 @@ export class App extends React.Component<any, any> {
     super(props);
   }
 
+  public componentDidMount() {
+    fetch('/api//users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
+
   public render() {
     return (
       <div>

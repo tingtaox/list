@@ -45,7 +45,17 @@ module.exports = {
 
     watch: true,
 
-    devServer: { inline: true },
+    devServer: {
+        port: 9000,
+        proxy: {
+            "/api": {
+                target: "http://localhost:3000",
+                secure: false,
+                pathRewrite: { "^/api": "" }
+            }
+        },
+        inline: true
+    },
 
     plugins: [
         extractSass

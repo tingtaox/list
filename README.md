@@ -16,3 +16,7 @@ Notes:
   Then webpack-dev-server will find index.html in build/
 
   - For React app, as you pack javascript and css into bundle, script and link tag for js and css bundle is essential. Also, the app entry point <div id="example"></div> for React to render the UI is essential.
+
+- Node Express
+  - run express server on port 3001: $node ./bin/www PORT=3001
+  - add proxy in webpack-dev-server for express server
