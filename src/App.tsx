@@ -29,12 +29,14 @@ export class App extends React.Component<any, any> {
 
   public render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={this.withListView} />
-          <Route path="/detail/:id" component={DetailView} />
-        </Switch>
-      </BrowserRouter>
+      <div>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={this.withListView} />
+            <Route path="/detail/:id" component={DetailView} />
+          </Switch>
+        </BrowserRouter>
+      </div>
     );
   }
 

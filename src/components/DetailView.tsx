@@ -12,8 +12,8 @@ export interface DetailViewProps {
 export const DetailView = (props: DetailViewProps) => {
   return (
     <div>
-      <span>Hello detail {props.match.params.id}</span>
-      <Link to="/">Back</Link>
+      <p className="detailHeader">Hello detail {props.match.params.id}</p>
+      <p><Link to="/">Back</Link></p>
     </div>
   );
 };

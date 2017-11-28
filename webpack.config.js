@@ -1,12 +1,15 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var extractSass = new ExtractTextPlugin("main.bundle.css");
+// the parameter in ExtractTextPlugin specifies the output filename
+var extractSass = new ExtractTextPlugin("bundle.css");
 
 module.exports = {
     entry: ["./src/index.tsx", "./scss/main.scss"],
     output: {
         filename: "bundle.js",
-        path: __dirname + "/dist"
+        path: __dirname + "/dist",
+        // wepack-dev-server watches changes and serve static files in the folder. modified bundle is served from memory at the relative path specified in publicPath
+        publicPath: "/assets/"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -27,6 +30,7 @@ module.exports = {
 
             {
                 test: /\.scss$/,
+                // *.scss | sass-loader | css-loader | style-loader -> output file
                 use: extractSass.extract({
                     use: [
                         { loader: "css-loader", options: { sourceMap: true } },
@@ -38,6 +42,8 @@ module.exports = {
             }
         ]
     },
+
+    watch: true,
 
     devServer: { inline: true },
 
