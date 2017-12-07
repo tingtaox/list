@@ -10,12 +10,12 @@ export interface ListItemProps {
 }
 
 export const ListItem = (props: ListItemProps) => (
-  <li>
+  <li className="listRow">
     <Link to={`/detail/${props.id}`}>
-      <p className="title">{props.title}</p>
-      <p className="username">{props.username}</p>
-      <p className="createDate">{props.createDate}</p>
-      <p className="views">{props.views}</p>
+      <a className="title">{props.title}</a>
+      <span className="username">{props.username}</span>
+      <span className="createDate">{props.createDate}</span>
+      <span className="views">{props.views}</span>
     </Link>
   </li>
 );

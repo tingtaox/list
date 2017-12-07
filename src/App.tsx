@@ -1,8 +1,10 @@
 import * as React from "react";
-import { ListItemProps } from './components/ListItem';
-import { ListView } from './components/ListView';
-import { DetailView } from './components/DetailView';
+import { ListItemProps } from './components/list/ListItem';
+import { ListView } from './components/list/ListView';
+import { DetailView } from './components/list/DetailView';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+import { Input, InputProps } from './components/input/Input';
 
 export class App extends React.Component<any, any> {
 
@@ -25,6 +27,7 @@ export class App extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
+    this.state = { value: null };
   }
 
   public componentDidMount() {
@@ -34,16 +37,28 @@ export class App extends React.Component<any, any> {
   }
 
   public render() {
+
+    const props: InputProps = {
+      value: this.state.value,
+      handleChange: this.onInputChange
+    };
+
     return (
       <div>
-        <BrowserRouter>
+        {/* <BrowserRouter>
           <Switch>
             <Route exact path="/" component={this.withListView} />
             <Route path="/detail/:id" component={DetailView} />
           </Switch>
-        </BrowserRouter>
+        </BrowserRouter> */}
+        <Input {...props} />
+        <span>{this.state.value}</span>
       </div>
     );
+  }
+
+  private onInputChange = (value: string) => {
+    this.setState({ value });
   }
 
   private withListView = () => {
