@@ -27,24 +27,19 @@ export class App extends React.Component<any, any> {
 
   constructor(props: any) {
     super(props);
-    this.state = { value: null };
-  }
-
-  public componentDidMount() {
-    fetch('/api//users')
-      .then(res => res.json())
-      .then(users => this.setState({ users }));
+    this.state = { errorMessage: null, value: null };
   }
 
   public render() {
-
     const props: InputProps = {
+      errorMessage: this.state.errorMessage,
+      placeholder: 'Enter text',
       value: this.state.value,
       handleChange: this.onInputChange
     };
 
     return (
-      <div>
+      <div className="form">
         {/* <BrowserRouter>
           <Switch>
             <Route exact path="/" component={this.withListView} />
@@ -58,7 +53,14 @@ export class App extends React.Component<any, any> {
   }
 
   private onInputChange = (value: string) => {
-    this.setState({ value });
+    const errorMessage = this.validator(value);
+    this.setState({ errorMessage, value });
+  }
+
+  private validator = (value: string) => {
+    if (value.length > 5) {
+      return 'String is too long';
+    }
   }
 
   private withListView = () => {
