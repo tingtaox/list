@@ -6,6 +6,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import { Input, InputProps } from './components/input/Input';
 
+import { PrimaryButton, SuccessButton, DangerButton } from './components/button/Buttons';
+
 export class App extends React.Component<any, any> {
 
   private data: ListItemProps[] = [
@@ -48,6 +50,11 @@ export class App extends React.Component<any, any> {
         </BrowserRouter> */}
         <Input {...props} />
         <span>{this.state.value}</span>
+
+        <PrimaryButton onClick={null}>Primary button</PrimaryButton>
+        <SuccessButton onClick={null}>Success button</SuccessButton>
+        <DangerButton onClick={null}>Danger button</DangerButton>
+
       </div>
     );
   }
